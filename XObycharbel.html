@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('w0628_1s_Geometric-X-and-O-seamless-pattern-wallpaper-in-cream-and-black-With-Love-XO_Repeating-Pattern-Sample-1.jpg') repeat;
+        }
+
+        .game {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div class="game">
+        <h1>Rock ✊ Paper ✋ Scissors ✌️</h1>
+        <div class="options">
+            <button onclick="playGame('rock')">Rock ✊</button>
+            <button onclick="playGame('paper')">Paper ✋</button>
+            <button onclick="playGame('scissors')">Scissors ✌️</button>
+        </div>
+        <div id="result" class="result"></div>
+
+        <script>
+            function playGame(playerChoice) {
+                const choices = ['rock', 'paper', 'scissors'];
+                const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+                const result = getResult(playerChoice, computerChoice);
+
+                displayResult(result, playerChoice, computerChoice);
+            }
+
+            function getResult(player, computer) {
+                if (player === computer) {
+                    return 'It\'s a tie! 🤝';
+                } else if (
+                    (player === 'rock' && computer === 'scissors') ||
+                    (player === 'paper' && computer === 'rock') ||
+                    (player === 'scissors' && computer === 'paper')
+                ) {
+                    return 'You win! 🎉';
+                } else {
+                    return 'You lose! 😔';
+                }
+            }
+
+            function displayResult(result, player, computer) {
+                const resultElement = document.getElementById('result');
+                resultElement.innerHTML = `<p>${result}</p><p>You chose ${player} ${getEmoji(player)}. Computer chose ${computer} ${getEmoji(computer)}.</p>`;
+            }
+
+            function getEmoji(choice) {
+                switch (choice) {
+                    case 'rock':
+                        return '✊';
+                    case 'paper':
+                        return '✋';
+                    case 'scissors':
+                        return '✌️';
+                    default:
+                        return '';
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
