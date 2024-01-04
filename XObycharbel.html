@@ -5,13 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        nav {
+            /* background-color: #902f2f; */
+            background-image: url(Simple-abstract-black-gold-background-vector.jpg);
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .discord-logo, .instagram-logo, .github-logo {
+            width: 30px; /* Adjust the size of the logos as needed */
+            height: 30px;
+            margin-right: 5px;
+            transition: transform 0.3s; /* Smooth transition for the hover effect */
+        }
+
+        nav a:hover .discord-logo,
+        nav a:hover .instagram-logo,
+        nav a:hover .github-logo {
+            transform: scale(1.2); /* Increase the size on hover */
+        }
+    </style>
+    <title>Your Website</title>
+</head>
+<body>
+
+    <nav>
+        <a href="https://discord.gg/your_discord_invite" target="_blank">
+            <img class="discord-logo" src="4695745.webp" alt="Discord Logo">
+            Discord
+        </a>
+        <a href="https://www.instagram.com/your_instagram_username" target="_blank">
+            <img class="instagram-logo" src="free-instagram-4703914-3915166.webp" alt="Instagram Logo">
+            Instagram
+        </a>
+        <a href="https://github.com/your_github_username" target="_blank">
+            <img class="github-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo">
+            GitHub
+        </a>
+    </nav>
+
+    <!-- Your content here -->
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background: url('w0628_1s_Geometric-X-and-O-seamless-pattern-wallpaper-in-cream-and-black-With-Love-XO_Repeating-Pattern-Sample-1.jpg') repeat;
+            background: url(gettyimages-1406147229-640x640.jpg) repeat;
         }
 
         .game {
@@ -41,6 +115,7 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    
     <div class="game">
         <h1>Rock ✊ Paper ✋ Scissors ✌️</h1>
         <div class="options">
