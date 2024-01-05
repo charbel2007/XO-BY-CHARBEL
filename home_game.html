@@ -59,12 +59,26 @@
         .photo:hover img {
             transform: scale(1.1); /* Increase the size on hover */
         }
+        body.light-mode {
+    background-image: url('gettyimages-1406147016-640x640.JPEG');
+    /* Other light mode styles */
+}
+
+body.dark-mode {
+    background-color: #030e22;
+    background-image: url(nebg.jpeg);
+   
+    /* Other dark mode styles */
+}
+#darkModeToggle{
+    border-radius: 20px;
+}
     </style>
     <title>GAMES BY CHARBEL</title>
     <link rel="icon" href="chimney-home-icon-transparent-1.png" type="image/x-icon">
     
 </head>
-<body>
+<body  class="light-mode">
 
     <nav>
         <a href="#">Home</a>
@@ -73,6 +87,8 @@
         <a href="https://www.instagram.com/charbelchy777/" target="_blank">Instagram</a>
         <a href="https://github.com/charbel2007" target="_blank">GitHub</a>
         <a href="#">Contact</a>
+        <!-- Existing navigation links -->
+    <!-- <button id="darkModeToggle">Toggle Dark Mode</button> -->
     </nav>
 
     <div class="photo-container">
@@ -87,6 +103,29 @@
             <img src="pngimg.com - dice_PNG54.png" alt="Image 3">
         </a>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    // Check if user has a preference for dark mode in local storage
+    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+    // Set initial theme based on user preference or default to light mode
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+    }
+
+    // Toggle dark mode on button click
+    darkModeToggle.addEventListener('click', function () {
+        body.classList.toggle('dark-mode');
+        // Update user preference in local storage
+        const theme = body.classList.contains('dark-mode') ? 'enabled' : 'disabled';
+        localStorage.setItem('darkMode', theme);
+    });
+});
+
+    </script>
 
 </body>
 </html>
