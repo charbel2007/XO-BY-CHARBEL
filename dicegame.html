@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="pngimg.com - dice_PNG54.png" type="image/x-icon">
+    <link rel="icon" href="rock-emoji-499x512-koqh2fbb." type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        nav {
+            /* background-color: #902f2f; */
+            background-image: url(Simple-abstract-black-gold-background-vector.jpg);
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .discord-logo, .instagram-logo, .github-logo,.home {
+            width: 30px; /* Adjust the size of the logos as needed */
+            height: 30px;
+            margin-right: 5px;
+            transition: transform 0.3s; /* Smooth transition for the hover effect */
+        }
+
+        nav a:hover .discord-logo,
+        nav a:hover .instagram-logo,
+        nav a:hover .github-logo,
+        nav a:hover .home {
+            transform: scale(1.2); /* Increase the size on hover */
+        }
+    </style>
+    <title>DICE</title>
+</head>
+<body>
+
+    <nav>
+        <a href="https://discord.gg/mQHcJPjnz3" target="_blank">
+            <img class="discord-logo" src="4695745.webp" alt="Discord Logo">
+            Discord
+        </a>
+        <a href="https://www.instagram.com/charbelchy777/" target="_blank">
+            <img class="instagram-logo" src="free-instagram-4703914-3915166.webp" alt="Instagram Logo">
+            Instagram
+        </a>
+        <a href="https://github.com/charbel2007" target="_blank">
+            <img class="github-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo">
+            GitHub
+        </a>
+        <a href="home_game.html" class="back-to-home">Back to Home  
+            <img id="10" class="home" src="chimney-home-icon-transparent-1.png" alt=""></a>  
+    </nav>
+
+    <!-- Your content here -->
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('gettyimages-1406147229-640x640.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #dice {
+            width: 100px;
+            height: 100px;
+            font-size: 2em;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.5s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        #dice.rolling {
+            animation: rotate 1s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        #cube-container {
+            perspective: 800px;
+            perspective-origin: 50% 50%;
+        }
+
+        #cube {
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            animation: rotateCube 5s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid #333;
+        }
+
+        .front { transform: translateZ(50px); background-color: #3498db; }
+        .back { transform: rotateY(180deg) translateZ(50px); background-color: #e74c3c; }
+        .right { transform: rotateY(90deg) translateZ(50px); background-color: #2ecc71; }
+        .left { transform: rotateY(-90deg) translateZ(50px); background-color: #f39c12; }
+        .top { transform: rotateX(90deg) translateZ(50px); background-color: #ecf0f1; }
+        .bottom { transform: rotateX(-90deg) translateZ(50px); background-color: #34495e; }
+
+        @keyframes rotateCube {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+    <title>3D Cube and Dice</title>
+</head>
+<body>
+
+    <div id="cube-container">
+        <div id="cube">
+            <div class="face front">1</div>
+            <div class="face back">6</div>
+            <div class="face right">4</div>
+            <div class="face left">3</div>
+            <div class="face top">5</div>
+            <div class="face bottom">2</div>
+        </div>
+    </div>
+
+    <div id="dice" onclick="rollDice()">1</div>
+
+    <script>
+        function rollDice() {
+            const dice = document.getElementById('dice');
+            dice.classList.add('rolling');
+
+            setTimeout(() => {
+                const randomNumber = Math.floor(Math.random() * 6) + 1;
+                dice.textContent = randomNumber;
+                dice.classList.remove('rolling');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

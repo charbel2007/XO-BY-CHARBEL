@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="rock-emoji-499x512-koqh2fbb." type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        nav {
+            /* background-color: #902f2f; */
+            background-image: url(Simple-abstract-black-gold-background-vector.jpg);
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .discord-logo, .instagram-logo, .github-logo ,.home {
+            width: 30px; /* Adjust the size of the logos as needed */
+            height: 30px;
+            margin-right: 5px;
+            transition: transform 0.3s; /* Smooth transition for the hover effect */
+        }
+
+
+        nav a:hover .discord-logo,
+        nav a:hover .instagram-logo,
+        nav a:hover .github-logo,
+        nav a:hover .home 
+        {
+            transform: scale(1.2); /* Increase the size on hover */
+        }
+        
+        
+        
+    </style>
+      <link rel="icon" href="3d-cross-sign-on-a-transparent-background-free-png.webp" type="image/x-icon">
+    <title>XO</title>
+</head>
+<body>
+
+    <nav>
+        <a href="https://discord.gg/mQHcJPjnz3" target="_blank">
+            <img class="discord-logo" src="4695745.webp" alt="Discord Logo">
+            Discord
+        </a>
+        <a href="https://www.instagram.com/charbelchy777/" target="_blank">
+            <img class="instagram-logo" src="free-instagram-4703914-3915166.webp" alt="Instagram Logo">
+            Instagram
+        </a>
+        <a href="https://github.com/charbel2007" target="_blank">
+            <img class="github-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo">
+            GitHub
+        </a>
+        <a href="home_game.html" class="back-to-home">Back to Home  
+        <img id="10" class="home" src="chimney-home-icon-transparent-1.png" alt=""></a>  
+        
+    </nav>
+
+    <!-- Your content here -->
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('gettyimages-1406147229-640x640.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #f4f4f4;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+            background-color: white;
+        }
+
+        .cell:hover {
+            background-color: #eee;
+        }
+    </style>
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+
+    <div id="board"></div>
+
+    <script>
+        const board = document.getElementById('board');
+        const cells = Array.from({ length: 9 }, (_, index) => createCell(index));
+
+        function createCell(index) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.index = index;
+            cell.addEventListener('click', () => handleCellClick(index));
+            board.appendChild(cell);
+            return cell;
+        }
+
+        function handleCellClick(index) {
+            if (!isCellEmpty(index)) return;
+
+            playerMove(index);
+            if (!checkForWinner()) {
+                setTimeout(() => {
+                    computerMove();
+                    checkForWinner();
+                }, 500);
+            }
+        }
+
+        function playerMove(index) {
+            cells[index].textContent = 'X';
+            cells[index].classList.add('disabled');
+        }
+
+        function computerMove() {
+            const emptyCells = cells.filter((cell) => !cell.textContent);
+            if (emptyCells.length > 0) {
+                const randomIndex = Math.floor(Math.random() * emptyCells.length);
+                const computerCell = emptyCells[randomIndex];
+                computerCell.textContent = 'O';
+                computerCell.classList.add('disabled');
+            }
+        }
+
+        function isCellEmpty(index) {
+            return cells[index].textContent === '';
+        }
+
+        function checkForWinner() {
+            const lines = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6],
+            ];
+
+            for (const line of lines) {
+                const [a, b, c] = line;
+                if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
+                    alert(`${cells[a].textContent} wins!`);
+                    resetBoard();
+                    return true;
+                }
+            }
+
+            if (cells.every(cell => cell.textContent !== '')) {
+                alert('It\'s a draw!');
+                resetBoard();
+                return true;
+            }
+
+            return false;
+        }
+
+        function resetBoard() {
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('disabled');
+            });
+        }
+    </script>
+
+</body>
+</html>
+
